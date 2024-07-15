@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Прогноз погоды для города <span th:text="${city}"></span></h1>
+<p>Источник: <span th:text="${source}"></span></p>
+<p>Температура: <span th:text="${temperature}"></span> °C</p>
+<p>Влажность: <span th:text="${humidity}"></span>%</p>
+
+<form action="/weather" method="get">
+    <label for="city">Введите город:</label>
+    <input type="text" id="city" name="city" required>
+    <label for="source">Выберите источник:</label>
+    <select id="source" name="source" required>
+        <option value="OpenWeather">OpenWeather</option>
+        <option value="AccuWeather">AccuWeather</option>
+    </select>
+    <p><button type="submit">Получить прогноз</button></p>
+</form>
+<p style="color: red"><span th:text="${error}"></span></p>
+</body>
+</html>
